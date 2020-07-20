@@ -92,9 +92,10 @@
 - MoSold: Month Sold
 - YrSold: Year Sold
 - SaleType: Type of sale
-- SaleCondition: Condition of sale
+- SaleCondition: Condition of salecd
 
 ### 3. Reference
+#### (1) Kaggle Token download
 - Kaggle.json download from api token in the website.(https://www.kaggle.com/jaydenmy/account)
 - this file which is downloaded execute the code below.
 
@@ -106,6 +107,19 @@ for fn in uploaded.keys():
       name=fn, length=len(uploaded[fn])))
   
 !mkdir -p ~/.kaggle/ && mv kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json
+~~~
+#### (2) Load data into BigQuery
+~~~ python
+import pandas as pd
+from pandas.io import gbq
+
+# import sample_submission file
+sample_submission = pd.read_csv('sample_submission.csv')
+
+# Connect to Google Cloud API and Upload DataFrame
+sample_submission.to_gbq(destination_table='house_price.sample_submission', 
+                  project_id='myproject-283503', 
+                  if_exists='replace')
 ~~~
 
 ### 4. Practice Skills
