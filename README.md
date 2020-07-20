@@ -128,7 +128,7 @@ sample_submission.to_gbq(destination_table='house_price.sample_submission',
 
 ## III. Development Dpecification
 ### 1. OS environment
-- Linux, Jupyter, Google Colab
+- Jupyter, Google Colab
 
 ### 2. Python version
 - Python 3.6.8
